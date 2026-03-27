@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import BenefitsStrip from '../components/BenefitsStrip.astro';
+import BookingWidget from '../components/BookingWidget.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+
+const services = [
+  {
+    title: 'Гостиница',
+    description: '12 комфортабельных номеров и 8 апартаментов в центре Златоуста',
+    href: '/hotel',
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>'
+  },
+  {
+    title: 'Ресторан',
+    description: '«Счастливый Кузюк» — уральская кухня и дегустационные обеды',
+    href: '/restaurant',
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>'
+  },
+  {
+    title: 'Баня и бассейн',
+    description: 'Русская баня и бассейн для отдыха всей семьей',
+    href: '/amenities#bathhouse',
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2M17 4V2M3 8h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zM7 12h10M7 16h10" /></svg>'
+  },
+  {
+    title: 'Банкетные залы',
+    description: 'Залы «Прованс» до 30 чел. и «Шампань» до 70 чел.',
+    href: '/amenities#banquet',
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" /></svg>'
+  },
+  {
+    title: 'Беседки с барбекю',
+    description: 'Уютные беседки на 12 и 40 человек с мангалом',
+    href: '/amenities#gazebo',
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>'
+  },
+  {
+    title: 'Салон красоты',
+    description: 'Полный спектр услуг для красоты и ухода',
+    href: '/amenities#beauty',
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>'
+  },
+];
+---
+
+<BaseLayout title="Главная" description="Гостиничный комплекс Бельмонт — современный отель в Златоусте с рестораном, баней, бассейном и банкетными залами.">
+  <Header />
+  
+  <main>
+    <Hero 
+      title="Гостиничный комплекс «Бельмонт»"
+      subtitle="Уютный отель в центре Златоуста с рестораном уральской кухни, баней и бассейном"
+    >
+      <BookingWidget />
+      <a 
+        href="/hotel" 
+        class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+      >
+        Наши номера
+      </a>
+    </Hero>
+    
+    <BenefitsStrip />
+    
+    <Section 
+      title="Наши услуги"
+      subtitle="Гостиничный комплекс «Бельмонт» предлагает полный спектр услуг для комфортного отдыха и деловых поездок"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </Section>
+    
+    <Section class="bg-white" id="about">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-playfair text-3xl font-bold text-primary mb-6">
+            Добро пожаловать в «Бельмонт»
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>
+              Гостиница «Бельмонт» — это современный мини-отель семейного типа, открытый в мае 2007 года. 
+              Удобное расположение в административном и культурном центре Златоуста позволяет гостям города 
+              в короткое время воспользоваться всеми необходимыми услугами.
+            </p>
+            <p>
+              К вашим услугам 12 комфортабельных номеров различных категорий и 8 апартаментов в отдельном 
+              корпусе в 50 метрах от основного здания. В каждом номере: ванная комната, фен, ЖК-телевизор, 
+              мини-бар, холодильник, телефон и бесплатный Wi-Fi.
+            </p>
+            <p>
+              С 7 до 10 утра в ресторане «Счастливый Кузюк» для гостей отеля сервируется завтрак, 
+              включенный в стоимость номера.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <BookingWidget />
+            <a 
+              href="/contact" 
+              class="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium px-6 py-3 rounded-lg transition-colors"
+            >
+              Связаться с нами
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img 
+            src="https://hotel-bellmont.ru/images/title.jpg" 
+            alt="Гостиница Бельмонт" 
+            class="rounded-lg shadow-md w-full h-48 object-cover"
+            loading="lazy"
+          />
+          <img 
+            src="https://hotel-bellmont.ru/images/bassein.jpg" 
+            alt="Бассейн" 
+            class="rounded-lg shadow-md w-full h-48 object-cover mt-8"
+            loading="lazy"
+          />
+          <img 
+            src="https://hotel-bellmont.ru/images/biliard.jpg" 
+            alt="Бильярд" 
+            class="rounded-lg shadow-md w-full h-48 object-cover"
+            loading="lazy"
+          />
+          <img 
+            src="https://hotel-bellmont.ru/images/internet.jpg" 
+            alt="Wi-Fi" 
+            class="rounded-lg shadow-md w-full h-48 object-cover mt-8"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </Section>
+    
+    <Section id="booking">
+      <div class="text-center mb-8">
+        <h2 class="font-playfair text-3xl font-bold text-primary mb-4">
+          Забронировать номер
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Бронируйте номер на официальном сайте отеля «Бельмонт» по самым выгодным тарифам
+        </p>
+      </div>
+      <div class="flex flex-col items-center gap-4">
+        <BookingWidget />
+        <p class="text-sm text-gray-500">
+          Система онлайн-бронирования TravelLine
+        </p>
+      </div>
+    </Section>
+    
+    <Section class="bg-white">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="font-playfair text-2xl font-bold text-primary mb-6">
+            Встретим вас из аэропорта
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Наш Mercedes-Benz GL к вашим услугам. Комфортная поездка из аэропорта до отеля.
+          </p>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              <strong>Челябинск</strong> — 6000 руб.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              <strong>Екатеринбург</strong> — 8000 руб.
+            </li>
+          </ul>
+          <a 
+            href="tel:+79068628866" 
+            class="inline-flex items-center gap-2 mt-6 text-primary font-medium hover:text-primary-dark transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Заказать трансфер
+          </a>
+        </div>
+        <ContactInfo />
+      </div>
+    </Section>
+  </main>
+  
+  <Footer />
+</BaseLayout>

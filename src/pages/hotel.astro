@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import RoomCard from '../components/RoomCard.astro';
+import BenefitsStrip from '../components/BenefitsStrip.astro';
+import BookingWidget from '../components/BookingWidget.astro';
+
+const rooms = [
+  {
+    name: 'Стандарт одноместный',
+    area: '12 м²',
+    capacity: '1 гость',
+    description: 'Уютный одноместный номер с односпальной кроватью, рабочим столом и всем необходимым для комфортного проживания.',
+    image: 'https://hotel-bellmont.ru/images/nomera/standart1/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Душевая кабина', 'Мини-бар', 'Фен', 'Телефон']
+  },
+  {
+    name: 'Стандарт двухместный',
+    area: '30 м²',
+    capacity: '2 гостя',
+    description: 'Просторный двухместный номер с двуспальной кроватью, зоной отдыха с креслом и пуфиком.',
+    image: 'https://hotel-bellmont.ru/images/nomera/standart2/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Душевая кабина', 'Мини-бар', 'Холодильник', 'Фен']
+  },
+  {
+    name: 'Стандарт твин',
+    area: '30 м²',
+    capacity: '2 гостя',
+    description: 'Двухместный номер с двумя односпальными кроватями, идеально подходит для коллег или друзей.',
+    image: 'https://hotel-bellmont.ru/images/nomera/standart3/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Душевая кабина', 'Мини-бар', 'Холодильник', 'Фен']
+  },
+  {
+    name: 'Студия',
+    area: '30 м²',
+    capacity: '2+2 гостя',
+    description: 'Номер с возможностью дополнительного размещения на раскладном диване. Идеален для семьи.',
+    image: 'https://hotel-bellmont.ru/images/nomera/studiya/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Душевая кабина', 'Мини-бар', 'Холодильник', 'Фен', 'Раскладной диван']
+  },
+  {
+    name: 'Стандарт Премиум',
+    area: '30 м²',
+    capacity: '2 гостя',
+    description: 'Улучшенный номер с двуспальной кроватью с балдахином, кондиционером и махровыми халатами.',
+    image: 'https://hotel-bellmont.ru/images/nomera/nomer9/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Кондиционер', 'Душевая кабина', 'Мини-бар', 'Холодильник', 'Фен', 'Махровые халаты']
+  },
+  {
+    name: 'Люкс для новобрачных',
+    area: '45 м²',
+    capacity: '2 гостя',
+    description: 'Романтичный номер с джакузи на двоих, балдахином, домашним кинотеатром и прекрасным видом.',
+    image: 'https://hotel-bellmont.ru/images/nomera/novobrach/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Домашний кинотеатр', 'Кондиционер', 'Джакузи', 'Мини-бар', 'Холодильник', 'Фен', 'Махровые халаты']
+  },
+  {
+    name: 'Люкс Делюкс',
+    area: '45 м²',
+    capacity: '2+2 гостя',
+    description: 'Просторный номер-люкс с отдельной гостиной зоной, диваном и душем с гидромассажем.',
+    image: 'https://hotel-bellmont.ru/images/nomera/lyuks/1.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Домашний кинотеатр', 'Кондиционер', 'Гидромассажный душ', 'Мини-бар', 'Холодильник', 'Фен', 'Махровые халаты']
+  },
+  {
+    name: 'Апартаменты',
+    area: 'от 30 м²',
+    capacity: '2+2 гостя',
+    description: '8 апартаментов в отдельном корпусе в 50 м от основного здания. Полностью оборудованная кухня.',
+    image: 'https://hotel-bellmont.ru/images/title.jpg',
+    amenities: ['Wi-Fi', 'ЖК-телевизор', 'Кухня', 'Холодильник', 'Стиральная машина', 'Фен']
+  },
+];
+---
+
+<BaseLayout 
+  title="Гостиница"
+  description="Номера гостиницы Бельмонт — Standard, Studio, Suite. Комфортное размещение в Златоусте."
+>
+  <Header />
+  
+  <main>
+    <Hero 
+      title="Гостиница Бельмонт"
+      subtitle="12 комфортабельных номеров и 8 апартаментов в центре Златоуста"
+    />
+    
+    <BenefitsStrip />
+    
+    <Section>
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+        <div>
+          <h2 class="font-playfair text-3xl font-bold text-primary mb-6">
+            Удобства для гостей
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Гостиница «Бельмонт» расположена в самом центре Златоуста, недалеко от Серафимовского 
+            кафедрального собора, с прекрасными видами на уральские горы и городской пруд.
+          </p>
+          <p class="text-gray-600">
+            Из номеров открываются красивые виды на Серафимовский кафедральный собор, уральские горы 
+            и городской пруд. Тарифы на проживание соответствуют нормативам, в т.ч. отведенным на 
+            возмещение командировочных расходов в РФ.
+          </p>
+        </div>
+        <div class="bg-cream rounded-xl p-6">
+          <h3 class="font-semibold text-primary mb-4">В стоимость включено:</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Завтрак (шведский стол) с 7:00 до 10:00
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Бесплатный Wi-Fi до 150 Мбит/сек
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Парковка
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Проживание 24 часа без доплаты
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Дети до 3 лет — бесплатно
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Section>
+    
+    <Section title="Номера" subtitle="Выберите категорию номера, подходящую именно вам" class="bg-white">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {rooms.map((room) => (
+          <RoomCard {...room} />
+        ))}
+      </div>
+    </Section>
+    
+    <Section id="booking">
+      <div class="text-center mb-8">
+        <h2 class="font-playfair text-3xl font-bold text-primary mb-4">
+          Забронировать номер
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Бронируйте номер на официальном сайте отеля «Бельмонт» по самым выгодным тарифам
+        </p>
+      </div>
+      <div class="flex flex-col items-center gap-4">
+        <BookingWidget />
+        <p class="text-sm text-gray-500">
+          Система онлайн-бронирования TravelLine
+        </p>
+      </div>
+    </Section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
