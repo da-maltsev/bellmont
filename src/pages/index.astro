@@ -9,7 +9,8 @@ import BenefitsStrip from '../components/BenefitsStrip.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import ContactInfo from '../components/ContactInfo.astro';
 
-const base = '/bellmont';
+const basePath = import.meta.env.BASE_PATH || '/';
+const base = basePath === '/' ? '' : basePath;
 
 const services = [
   {

@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "BASE_PATH=/ npx astro build",
+    "build:gh-pages": "BASE_PATH=/bellmont npx astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

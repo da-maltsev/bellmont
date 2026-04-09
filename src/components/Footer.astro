@@ -1,5 +1,6 @@
 ---
-const base = '/bellmont';
+const basePath = import.meta.env.BASE_PATH || '/';
+const base = basePath === '/' ? '' : basePath;
 const services = [
   { href: `${base}/hotel`, label: 'Гостиница' },
   { href: `${base}/restaurant`, label: 'Ресторан' },
