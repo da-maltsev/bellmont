@@ -1,10 +1,11 @@
 ---
+const base = Astro.base || '';
 const navItems = [
-  { href: '/', label: 'Главная' },
-  { href: '/hotel', label: 'Гостиница' },
-  { href: '/restaurant', label: 'Ресторан' },
-  { href: '/amenities', label: 'Услуги' },
-  { href: '/contact', label: 'Контакты' },
+  { href: `${base}/`, label: 'Главная' },
+  { href: `${base}/hotel`, label: 'Гостиница' },
+  { href: `${base}/restaurant`, label: 'Ресторан' },
+  { href: `${base}/amenities`, label: 'Услуги' },
+  { href: `${base}/contact`, label: 'Контакты' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -13,7 +14,7 @@ const currentPath = Astro.url.pathname;
 <header class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between h-20">
-      <a href="/" class="flex items-center gap-3">
+      <a href={`${base}/`} class="flex items-center gap-3">
         <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
           <span class="text-white font-bold text-xl font-playfair">Б</span>
         </div>
