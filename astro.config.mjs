@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://hotel-bellmont.ru',
+  site: 'https://da-maltsev.github.io/bellmont',
   vite: {
     plugins: [tailwindcss()]
   },
