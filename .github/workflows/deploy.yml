@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build, Deploy & Publish Docker Image
 
 on:
   push:
@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  packages: write
 
 concurrency:
   group: "pages"
@@ -20,23 +21,41 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
-      - name: Build
+
+      - name: Build site
         run: npm run build:gh-pages
-      
-      - name: Upload artifact
+
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: |
+            ghcr.io/da-maltsev/bellmont:latest
+            ghcr.io/da-maltsev/bellmont:${{ github.sha }}
 
   deploy:
     needs: build

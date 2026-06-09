@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 const base = process.env.BASE_PATH || '/';
 
 export default defineConfig({
-  site: 'https://da-maltsev.github.io/bellmont',
+  site: 'https://hotel-bellmont.ru',
   base,
   vite: {
     plugins: [tailwindcss()]
