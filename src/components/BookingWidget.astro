@@ -7,15 +7,16 @@ const { class: className = '' } = Astro.props;
 ---
 
 <div class={`booking-widget ${className}`}>
-  <button
-    type="button"
-    data-booking-trigger
-    class="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-charcoal font-semibold px-6 py-3 rounded-lg transition-colors cursor-pointer"
+  <a
+    href="https://b.tlintegration.com/?hotel=13392"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-charcoal font-semibold px-6 py-3 rounded-lg transition-colors"
   >
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
     Забронировать номер
-  </button>
-  <p class="text-xs text-gray-500 mt-2">Свяжитесь с нами для бронирования</p>
+  </a>
+  <p class="text-xs text-gray-500 mt-2">Лучшие тарифы на официальном сайте</p>
 </div>

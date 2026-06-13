@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import BookingModal from '../components/BookingModal.astro';
 
 interface Props {
   title: string;
@@ -53,6 +52,5 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://hotel-be
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />
-    <BookingModal />
   </body>
 </html>
