@@ -67,3 +67,22 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-vds:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VDS_SSH_KEY }}
+
+      - name: Add VDS to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VDS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to VDS
+        run: |
+          ssh ${{ secrets.VDS_USER }}@${{ secrets.VDS_HOST }} \
+            "podman pull ghcr.io/da-maltsev/bellmont:latest && systemctl --user restart bellmont"
