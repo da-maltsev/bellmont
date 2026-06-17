@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://hotel-bellmont.ru/sitemap.xml
+LLMs-txt: https://hotel-bellmont.ru/llms.txt

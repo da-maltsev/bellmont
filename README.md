@@ -46,16 +46,27 @@ Site will be available at `http://your-vps-ip/`
 2. Copy `dist/` contents to nginx web root (e.g., `/var/www/bellmont`)
 3. Configure nginx to serve the static files
 
+## LLMs.txt
+
+The site provides an `llms.txt` file for AI agents and search tools:
+
+```text
+https://hotel-bellmont.ru/llms.txt
+```
+
+When updating site content (services, contacts, booking links, etc.), keep `public/llms.txt` in sync. See `AGENTS.md` for detailed conventions.
+
 ## Project Structure
 
 ```
 /
-├── public/          # Static assets (favicon, robots.txt)
+├── public/          # Static assets (favicon, robots.txt, llms.txt)
 ├── src/
 │   ├── components/ # Astro components
 │   ├── layouts/    # Page layouts
 │   ├── pages/      # Route pages
 │   └── styles/     # Global CSS
+├── AGENTS.md       # Project conventions for AI agents
 ├── astro.config.mjs
 ├── Dockerfile      # Multi-stage Docker build
 └── nginx.conf      # Nginx configuration
