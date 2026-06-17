@@ -7,13 +7,16 @@ interface Props {
   image?: string;
 }
 
-const { 
-  title, 
+const {
+  title,
   description = 'Гостиничный комплекс Бельмонт - современный отель в Златоусте. Уютные номера, ресторан уральской кухни, баня и бассейн.',
   image = '/images/og-image.webp'
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://hotel-bellmont.ru');
+const siteUrl = Astro.site || new URL('https://hotel-bellmont.ru');
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = new URL(image, siteUrl);
+const pageURL = new URL(Astro.url.pathname, siteUrl);
 ---
 
 <!doctype html>
@@ -22,24 +25,33 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://hotel-be
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    
+    <meta name="theme-color" content="#722F37" />
+
     <title>{title} | Гостиничный комплекс Бельмонт</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
-    
+
+    <meta property="og:site_name" content="Гостиничный комплекс Бельмонт" />
     <meta property="og:title" content={`${title} | Гостиничный комплекс Бельмонт`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:url" content={pageURL} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
-    
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://b.tlintegration.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://b.tlintegration.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    
+
     <script is:inline>
       (function() {
         const stored = localStorage.getItem('theme');

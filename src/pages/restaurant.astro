@@ -5,13 +5,17 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import BookingWidget from '../components/BookingWidget.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 ---
 
-<BaseLayout 
-  title="Ресторан"
-  description="Ресторан «Счастливый Кузюк» — уральская кухня в Златоусте. Дегустационные обеды, завтраки для гостей отеля."
+<BaseLayout
+  title="Ресторан «Счастливый Кузюк» в Златоусте"
+  description="Дегустационные обеды и ужины уральской кухни в ресторации «Счастливый Кузюк» при отеле Бельмонт."
 >
   <Header />
+  <SchemaOrg />
+  <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Ресторан', path: '/restaurant/' }]} />
   
   <main>
     <Hero 

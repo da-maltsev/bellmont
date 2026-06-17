@@ -6,13 +6,17 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import ContactInfo from '../components/ContactInfo.astro';
 import BookingWidget from '../components/BookingWidget.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 ---
 
-<BaseLayout 
-  title="Контакты"
-  description="Контакты гостиничного комплекса Бельмонт в Златоусте. Телефоны, адрес, схема проезда."
+<BaseLayout
+  title="Контакты отеля Бельмонт в Златоусте"
+  description="Адрес, телефон и схема проезда до гостиничного комплекса Бельмонт в Златоусте."
 >
   <Header />
+  <SchemaOrg type="ContactPage" />
+  <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Контакты', path: '/contact/' }]} />
   
   <main>
     <Hero 

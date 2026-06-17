@@ -1,0 +1,22 @@
+{
+  "name": "Гостиничный комплекс Бельмонт",
+  "short_name": "Бельмонт",
+  "description": "Современный отель в центре Златоуста с рестораном, баней, бассейном и банкетными залами.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF8F0",
+  "theme_color": "#722F37",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -8,6 +8,7 @@ const base = process.env.BASE_PATH || '/';
 export default defineConfig({
   site: 'https://hotel-bellmont.ru',
   base,
+  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()]
   },

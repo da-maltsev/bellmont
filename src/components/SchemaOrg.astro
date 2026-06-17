@@ -1,0 +1,58 @@
+---
+export interface Props {
+  type?: 'Hotel' | 'ContactPage';
+}
+
+const { type = 'Hotel' } = Astro.props;
+
+const siteUrl = 'https://hotel-bellmont.ru';
+const imageUrl = `${siteUrl}/images/og-image.webp`;
+
+const hotelSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Hotel',
+  name: 'Гостиничный комплекс Бельмонт',
+  alternateName: 'Bellmont Hotel',
+  image: imageUrl,
+  url: `${siteUrl}/`,
+  telephone: '+79068628866',
+  email: 'bellmont@mail.ru',
+  priceRange: '₽₽',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'ул. Таганайская, 194 А',
+    addressLocality: 'Златоуст',
+    addressRegion: 'Челябинская область',
+    postalCode: '456200',
+    addressCountry: 'RU'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 55.155248,
+    longitude: 59.672412
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '919',
+    bestRating: '5',
+    worstRating: '1'
+  },
+  sameAs: [
+    'https://vk.com/bellmont.hotel',
+    'https://yandex.ru/maps/org/belmont/1188344269/'
+  ]
+};
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Контакты отеля Бельмонт',
+  url: `${siteUrl}/contact/`,
+  mainEntity: hotelSchema
+};
+
+const schema = type === 'ContactPage' ? contactPageSchema : hotelSchema;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

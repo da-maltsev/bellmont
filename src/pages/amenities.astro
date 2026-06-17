@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import BookingWidget from '../components/BookingWidget.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 
 const amenities = [
   {
@@ -55,11 +57,13 @@ const amenities = [
 ];
 ---
 
-<BaseLayout 
-  title="Услуги"
-  description="Услуги гостиничного комплекса Бельмонт: баня, бассейн, бильярд, банкетные залы, беседки с барбекю."
+<BaseLayout
+  title="Услуги отеля Бельмонт — баня, бассейн, бильярд, банкетные залы"
+  description="Баня с бассейном, бильярд, банкетные залы, беседки с барбекю в гостиничном комплексе Бельмонт."
 >
   <Header />
+  <SchemaOrg />
+  <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Услуги', path: '/amenities/' }]} />
   
   <main>
     <Hero 

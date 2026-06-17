@@ -7,6 +7,8 @@ import Section from '../components/Section.astro';
 import RoomCard from '../components/RoomCard.astro';
 import BenefitsStrip from '../components/BenefitsStrip.astro';
 import BookingWidget from '../components/BookingWidget.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 
 const rooms = [
   {
@@ -76,11 +78,13 @@ const rooms = [
 ];
 ---
 
-<BaseLayout 
-  title="Гостиница"
-  description="Номера гостиницы Бельмонт — Standard, Studio, Suite. Комфортное размещение в Златоусте."
+<BaseLayout
+  title="Номера в отеле Бельмонт, Златоуст"
+  description="Уютные номера и апартаменты в центре Златоуста. Завтрак, Wi-Fi, парковка. Бронируйте онлайн."
 >
   <Header />
+  <SchemaOrg />
+  <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Гостиница', path: '/hotel/' }]} />
   
   <main>
     <Hero 
