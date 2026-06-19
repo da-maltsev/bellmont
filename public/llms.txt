@@ -22,7 +22,8 @@
 
 ## Бронирование
 
-- Онлайн-бронирование: https://b.tlintegration.com/?hotel=13392
+- Онлайн-бронирование: через виджет на официальном сайте https://hotel-bellmont.ru
+- Прямая ссылка на систему TravelLine: https://b.tlintegration.com/?hotel=13392
 
 ## Описание
 
