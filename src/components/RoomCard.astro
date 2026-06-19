@@ -8,6 +8,7 @@ interface Props {
   images?: string[];
   amenities?: string[];
   price?: string;
+  roomType?: string;
 }
 
 const { 
@@ -18,7 +19,8 @@ const {
   image, 
   images = [],
   amenities = [],
-  price
+  price,
+  roomType
 } = Astro.props;
 ---
 
@@ -75,7 +77,10 @@ const {
     )}
     
     <a 
-      href="#booking"
+      href="#"
+      target="_self"
+      data-tl-booking-open="true"
+      data-tl-room={roomType}
       class="inline-flex items-center gap-2 text-primary font-medium text-sm hover:text-primary-dark transition-colors"
     >
       Забронировать

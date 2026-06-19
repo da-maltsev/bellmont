@@ -46,10 +46,14 @@ const pageURL = new URL(Astro.url.pathname, siteUrl);
 
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://b.tlintegration.com" />
+    <link rel="dns-prefetch" href="https://ru-ibe.tlintegration.ru" />
+    <link rel="dns-prefetch" href="https://ibe.tlintegration.ru" />
+    <link rel="dns-prefetch" href="https://ibe.tlintegration.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://b.tlintegration.com" />
+    <link rel="preconnect" href="https://ru-ibe.tlintegration.ru" />
+    <link rel="preconnect" href="https://ibe.tlintegration.ru" />
+    <link rel="preconnect" href="https://ibe.tlintegration.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <script is:inline>
@@ -60,6 +64,32 @@ const pageURL = new URL(Astro.url.pathname, siteUrl);
           document.documentElement.classList.add('dark');
         }
       })();
+    </script>
+
+    <script type="text/javascript">
+      (function(w) {
+        var q = [
+          ["setContext", "TL-INT-hotel-bellmont_2026-06-17", "ru"],
+          ["embed", "search-form", { container: "tl-search-form" }]
+        ];
+        var h = ["ru-ibe.tlintegration.ru", "ibe.tlintegration.ru", "ibe.tlintegration.com"];
+        var t = w.travelline = (w.travelline || {}),
+            ti = t.integration = (t.integration || {});
+        ti.__cq = ti.__cq ? ti.__cq.concat(q) : q;
+        if (!ti.__loader) {
+          ti.__loader = true;
+          var d = w.document, c = d.getElementsByTagName("head")[0] || d.getElementsByTagName("body")[0];
+          function e(s, f) { return function() { w.TL || (c.removeChild(s), f()); }; }
+          (function l(h) {
+            if (0 === h.length) return;
+            var s = d.createElement("script");
+            s.type = "text/javascript"; s.async = true;
+            s.src = "https://" + h[0] + "/integration/loader.js";
+            s.onerror = s.onload = e(s, function() { l(h.slice(1, h.length)); });
+            c.appendChild(s);
+          })(h);
+        }
+      })(window);
     </script>
   </head>
   <body class="min-h-screen flex flex-col">
