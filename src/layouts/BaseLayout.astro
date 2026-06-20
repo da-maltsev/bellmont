@@ -5,12 +5,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  fullTitle?: boolean;
 }
 
 const {
   title,
-  description = 'Гостиничный комплекс Бельмонт - современный отель в Златоусте. Уютные номера, ресторан уральской кухни, баня и бассейн.',
-  image = '/images/og-image.webp'
+  description = 'Ресторанно-гостиничный комплекс Бельмонт - современная гостиница 3★ в Златоусте. Уютные номера, ресторан «Счастливый кузюк», баня и бассейн.',
+  image = '/images/og-image.webp',
+  fullTitle = false
 } = Astro.props;
 
 const siteUrl = Astro.site || new URL('https://hotel-bellmont.ru');
@@ -27,12 +29,12 @@ const pageURL = new URL(Astro.url.pathname, siteUrl);
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#722F37" />
 
-    <title>{title} | Гостиничный комплекс Бельмонт</title>
+    <title>{fullTitle ? title : `${title} | Бельмонт`}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <meta property="og:site_name" content="Гостиничный комплекс Бельмонт" />
-    <meta property="og:title" content={`${title} | Гостиничный комплекс Бельмонт`} />
+    <meta property="og:site_name" content="Ресторанно-гостиничный комплекс Бельмонт" />
+    <meta property="og:title" content={fullTitle ? title : `${title} | Бельмонт`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:url" content={pageURL} />

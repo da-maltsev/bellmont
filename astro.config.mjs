@@ -9,6 +9,10 @@ export default defineConfig({
   site: 'https://hotel-bellmont.ru',
   base,
   trailingSlash: 'always',
+  redirects: {
+    '/rooms/': '/hotel/',
+    '/contacts/': '/contact/'
+  },
   vite: {
     plugins: [tailwindcss()]
   },

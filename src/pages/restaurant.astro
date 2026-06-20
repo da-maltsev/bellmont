@@ -10,8 +10,8 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 ---
 
 <BaseLayout
-  title="Ресторан «Счастливый Кузюк» в Златоусте"
-  description="Дегустационные обеды и ужины уральской кухни в ресторации «Счастливый Кузюк» при отеле Бельмонт."
+  title="Ресторан «Счастливый кузюк» в Златоусте"
+  description="Дегустационные обеды и ужины уральской кухни в ресторации «Счастливый кузюк» при отеле Бельмонт."
 >
   <Header />
   <SchemaOrg />
@@ -19,13 +19,21 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
   
   <main>
     <Hero 
-      title="Ресторан «Счастливый Кузюк»"
+      title="Ресторан «Счастливый кузюк»"
       subtitle="Легендарная ресторация с уникальной трапезой-презентацией блюд уральской кухни"
     />
     
     <Section>
+      <div class="bg-cream rounded-xl p-6 mb-8">
+        <p class="text-gray-700">
+          Ресторан «Счастливый кузюк» расположен на первом этаже 
+          <a href="/" class="text-primary hover:text-primary-dark font-medium underline">ресторанно-гостиничного комплекса «Бельмонт»</a>. 
+          Приезжайте на дегустационный обед или ужин уральской кухни — и останавливайтесь у нас в номере.
+        </p>
+      </div>
+
       <div class="flex flex-wrap gap-4 mb-8">
-        <a 
+        <a
           href="https://vk.com/happy_kuzuk"
           target="_blank"
           rel="noopener noreferrer"
@@ -75,7 +83,7 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
         <div class="grid grid-cols-2 gap-4">
           <img
             src="/images/hotel.webp"
-            alt="Ресторан Счастливый Кузюк"
+            alt="Ресторан Счастливый кузюк"
             class="rounded-lg shadow-md w-full h-48 object-cover"
             loading="lazy"
           />
@@ -90,7 +98,28 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
     </Section>
     
     <Section class="bg-white">
-      <div class="bg-cream rounded-xl p-8 mb-12">
+      <div class="bg-cream rounded-xl p-8 mb-8">
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4">
+          Признание
+        </h2>
+        <p class="text-gray-600 mb-4">
+          Ресторан «Счастливый кузюк» вошёл в число лучших ресторанов России 2024 по версии 
+          Туту Медиаразведки и получил максимальную оценку 10 из 10 баллов.
+        </p>
+        <a
+          href="https://mediarazvedka.tutu.ru/rating-restaurants-2024"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-dark transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          Рейтинг лучших ресторанов России 2024
+        </a>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 mb-12 shadow-sm border border-gray-100">
         <h2 class="font-playfair text-2xl font-bold text-primary mb-6">
           Пресса и медиа
         </h2>

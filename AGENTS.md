@@ -4,7 +4,7 @@ This file contains project-specific instructions for AI agents and developers wo
 
 ## Project Overview
 
-Static website for **Гостиничный комплекс Бельмонт** (Bellmont Hotel), a family-style mini-hotel in Zlatoust, Russia.
+Static website for **Ресторанно-гостиничный комплекс Бельмонт** (Bellmont Hotel & Restaurant), a family-style mini-hotel and restaurant in Zlatoust, Russia.
 
 - **Production URL:** https://hotel-bellmont.ru
 - **Repository:** https://github.com/da-maltsev/bellmont
@@ -88,6 +88,8 @@ docker build -t bellmont .
 
 Current canonical values (copy from here, do not invent):
 
+- Name: Ресторанно-гостиничный комплекс Бельмонт
+- Category: Гостиница 3★
 - Address: г. Златоуст, ул. Таганайская, 194 А
 - Phone: +7 (906) 862-88-66
 - Secondary phone: +7 (3513) 655-700
@@ -96,3 +98,4 @@ Current canonical values (copy from here, do not invent):
 - Yandex Maps: https://yandex.ru/maps/org/belmont/1188344269/
 - Booking: https://b.tlintegration.com/?hotel=13392
 - Coordinates: 55.155248, 59.672412
+- Restaurant rating: https://mediarazvedka.tutu.ru/rating-restaurants-2024
