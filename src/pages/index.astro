@@ -8,6 +8,7 @@ import ServiceCard from '../components/ServiceCard.astro';
 import BenefitsStrip from '../components/BenefitsStrip.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
+import TwoGisBadge from '../components/TwoGisBadge.astro';
 
 const basePath = import.meta.env.BASE_PATH || '/';
 const base = basePath === '/' ? '' : basePath;
@@ -66,12 +67,13 @@ const services = [
       subtitle="Гостиница 3★ в центре Златоуста рядом с кафедральным Серафимовским собором, памятником «Вечный огонь» и мемориалом славы воинам ВОВ. В 30 минутах — национальный парк «Таганай». На первом этаже — легендарная ресторация «Счастливый кузюк» — ТОП-ресторанов России по версии Туту Медиаразведки."
     >
       <BookingWidget />
-        <a
-          href={`${base}/hotel/`}
-          class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg transition-colors"
-        >
+      <a
+        href={`${base}/hotel/`}
+        class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+      >
         Наши номера
       </a>
+      <TwoGisBadge slot="badge" />
     </Hero>
     
     <BenefitsStrip />

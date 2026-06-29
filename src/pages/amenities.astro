@@ -7,6 +7,7 @@ import Section from '../components/Section.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import TwoGisBadge from '../components/TwoGisBadge.astro';
 
 const amenities = [
   {
@@ -66,10 +67,12 @@ const amenities = [
   <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Услуги', path: '/amenities/' }]} />
   
   <main>
-    <Hero 
+    <Hero
       title="Услуги комплекса"
       subtitle="Ресторанно-гостиничный комплекс «Бельмонт» предлагает широкий спектр услуг для комфортного отдыха"
-    />
+    >
+      <TwoGisBadge slot="badge" />
+    </Hero>
     
     <Section>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

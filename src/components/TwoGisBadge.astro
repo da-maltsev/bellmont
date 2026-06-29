@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<img
+  src="/images/2gis-nominee-2026.webp"
+  alt="Номинант Премии 2ГИС 2026"
+  width="150"
+  height="302"
+  loading="lazy"
+  class={`w-auto max-h-36 md:max-h-44 object-contain ${className}`}
+/>

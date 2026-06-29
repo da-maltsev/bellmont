@@ -8,6 +8,7 @@ import ContactInfo from '../components/ContactInfo.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import TwoGisBadge from '../components/TwoGisBadge.astro';
 ---
 
 <BaseLayout
@@ -19,10 +20,12 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
   <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Контакты', path: '/contact/' }]} />
   
   <main>
-    <Hero 
+    <Hero
       title="Контакты"
       subtitle="Свяжитесь с нами любым удобным способом"
-    />
+    >
+      <TwoGisBadge slot="badge" />
+    </Hero>
     
     <Section>
       <div class="grid md:grid-cols-2 gap-12">

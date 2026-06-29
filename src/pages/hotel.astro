@@ -9,6 +9,7 @@ import BenefitsStrip from '../components/BenefitsStrip.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import TwoGisBadge from '../components/TwoGisBadge.astro';
 
 const rooms = [
   {
@@ -95,10 +96,12 @@ const rooms = [
   <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Гостиница', path: '/hotel/' }]} />
   
   <main>
-    <Hero 
+    <Hero
       title="Гостиница Бельмонт"
       subtitle="12 комфортабельных номеров и 8 апартаментов в центре Златоуста"
-    />
+    >
+      <TwoGisBadge slot="badge" />
+    </Hero>
     
     <BenefitsStrip />
     

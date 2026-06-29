@@ -7,6 +7,7 @@ import Section from '../components/Section.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 import SchemaOrg from '../components/SchemaOrg.astro';
 import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import TwoGisBadge from '../components/TwoGisBadge.astro';
 ---
 
 <BaseLayout
@@ -18,10 +19,12 @@ import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
   <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Ресторан', path: '/restaurant/' }]} />
   
   <main>
-    <Hero 
+    <Hero
       title="Ресторан «Счастливый кузюк»"
       subtitle="Легендарная ресторация с уникальной трапезой-презентацией блюд уральской кухни"
-    />
+    >
+      <TwoGisBadge slot="badge" />
+    </Hero>
     
     <Section>
       <div class="bg-cream rounded-xl p-6 mb-8">
