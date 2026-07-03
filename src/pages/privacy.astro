@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+---
+
+<BaseLayout
+  title="Политика конфиденциальности"
+  description="Политика обработки персональных данных сайта hotel-bellmont.ru. ИП Ценнер Ольга Владимировна."
+>
+  <Header />
+  <BreadcrumbSchema items={[{ name: 'Главная', path: '/' }, { name: 'Политика конфиденциальности', path: '/privacy/' }]} />
+
+  <main>
+    <Hero
+      title="Политика конфиденциальности"
+      subtitle="Правила обработки персональных данных пользователей сайта"
+    />
+
+    <Section class="bg-white">
+      <div class="max-w-3xl mx-auto prose prose-primary">
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4">1. Общие положения</h2>
+        <p class="text-gray-600 mb-4">
+          Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных
+          пользователей сайта <a href="https://hotel-bellmont.ru" class="text-primary hover:underline">https://hotel-bellmont.ru</a>.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Оператор персональных данных: <strong>Индивидуальный предприниматель Ценнер Ольга Владимировна</strong>
+          (ИНН 740409644440, ОГРНИП 310740414700010, адрес: Челябинская область, г. Златоуст).
+        </p>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">2. Какие данные собираются</h2>
+        <p class="text-gray-600 mb-4">
+          При посещении сайта автоматически могут собираться:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
+          <li>IP-адрес и данные о браузере/устройстве;</li>
+          <li>cookies и данные локального хранилища браузера;</li>
+          <li>referrer, URL посещённых страниц, время посещения;</li>
+          <li>действия на сайте: клики, скроллы, просмотры страниц (сервис Яндекс.Метрика).</li>
+        </ul>
+        <p class="text-gray-600 mb-4">
+          При оформлении бронирования через форму онлайн-бронирования могут вводиться имя, контактный телефон,
+          email и иные данные, необходимые для бронирования. Эти данные обрабатываются сервисом TravelLine.
+        </p>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">3. Цели обработки данных</h2>
+        <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
+          <li>анализ посещаемости и поведения пользователей для улучшения сайта;</li>
+          <li>корректная работа онлайн-бронирования номеров;</li>
+          <li>обратная связь с гостями по вопросам бронирования и проживания;</li>
+          <li>улучшение качества обслуживания в гостинице и ресторане.</li>
+        </ul>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">4. Передача данных третьим лицам</h2>
+        <p class="text-gray-600 mb-4">
+          Персональные данные пользователей передаются только в сторонние сервисы, необходимые для работы сайта:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
+          <li><strong>Яндекс.Метрика</strong> — сервис веб-аналитики (<a href="https://yandex.ru/legal/metrica_agreement/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">условия использования</a>);</li>
+          <li><strong>TravelLine</strong> — сервис онлайн-бронирования номеров.</li>
+        </ul>
+        <p class="text-gray-600 mb-4">
+          Иным третьим лицам данные не передаются, за исключением случаев, предусмотренных законодательством РФ.
+        </p>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">5. Срок хранения данных</h2>
+        <p class="text-gray-600 mb-4">
+          Данные хранятся в течение срока, необходимого для достижения целей обработки, но не дольше одного года
+          после последнего взаимодействия пользователя с сайтом.
+        </p>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">6. Права пользователя</h2>
+        <p class="text-gray-600 mb-4">
+          Пользователь вправе:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
+          <li>получить информацию о своих персональных данных, обрабатываемых оператором;</li>
+          <li>требовать уточнения, блокировки или удаления своих персональных данных;</li>
+          <li>отозвать согласие на обработку данных, направив соответствующий запрос на email оператора.</li>
+        </ul>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">7. Cookies</h2>
+        <p class="text-gray-600 mb-4">
+          Сайт использует файлы cookie для корректной работы, анализа посещаемости и сохранения пользовательских
+          настроек (например, выбора темы или согласия на cookies). Пользователь может отключить cookie в настройках
+          браузера, однако это может повлиять на работу некоторых функций сайта.
+        </p>
+
+        <h2 class="font-playfair text-2xl font-bold text-primary mb-4 mt-8">8. Контакты</h2>
+        <p class="text-gray-600 mb-4">
+          По всем вопросам, связанным с обработкой персональных данных, можно обращаться:
+        </p>
+        <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
+          <li>Email: <a href="mailto:bellmont@mail.ru" class="text-primary hover:underline">bellmont@mail.ru</a></li>
+          <li>Телефон: <a href="tel:+79068628866" class="text-primary hover:underline">+7 (906) 862-88-66</a></li>
+        </ul>
+
+        <p class="text-sm text-gray-500 mt-8">
+          Политика действует с момента размещения на сайте и может быть обновлена оператором без дополнительного уведомления.
+        </p>
+      </div>
+    </Section>
+  </main>
+
+  <Footer />
+</BaseLayout>

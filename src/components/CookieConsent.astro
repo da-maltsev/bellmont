@@ -1,0 +1,114 @@
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-50 translate-y-full transform-gpu bg-[#1a1a1a]/95 backdrop-blur-sm text-white shadow-2xl transition-transform duration-500 ease-out"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Уведомление об использовании cookies"
+>
+  <div class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-4 md:flex-row md:justify-between md:px-6">
+    <p class="text-sm leading-relaxed text-white/90">
+      Мы используем cookie и Яндекс.Метрику для анализа посещаемости, а также TravelLine для онлайн-бронирования.
+      Нажимая «Принять», вы соглашаетесь с обработкой данных в соответствии с
+      <a href="/privacy/" class="font-medium text-[#d4af37] underline transition-colors hover:text-[#e6c157]">
+        Политикой конфиденциальности
+      </a>.
+    </p>
+    <div class="flex w-full flex-shrink-0 gap-3 md:w-auto">
+      <button
+        type="button"
+        id="cookie-accept"
+        class="inline-flex flex-1 justify-center rounded-md bg-[#d4af37] px-5 py-2.5 text-sm font-semibold text-[#1a1a1a] transition-colors hover:bg-[#e6c157] focus:outline-none focus:ring-2 focus:ring-[#e6c157] focus:ring-offset-2 focus:ring-offset-[#1a1a1a] md:flex-none"
+      >
+        Принять
+      </button>
+      <button
+        type="button"
+        id="cookie-decline"
+        class="inline-flex flex-1 justify-center rounded-md border border-white/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1a1a1a] md:flex-none"
+      >
+        Отказаться
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    var STORAGE_KEY = 'bellmont_cookie_consent';
+    var banner = document.getElementById('cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept');
+    var declineBtn = document.getElementById('cookie-decline');
+
+    function loadMetrika() {
+      if (window.yandex_metrika_loaded) return;
+      window.yandex_metrika_loaded = true;
+
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) return;
+        }
+        k = e.createElement(t);
+        a = e.getElementsByTagName(t)[0];
+        k.async = 1;
+        k.src = r;
+        a.parentNode.insertBefore(k, a);
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+      ym(110362445, 'init', {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      });
+    }
+
+    function showBanner() {
+      if (!banner) return;
+      banner.classList.remove('translate-y-full');
+    }
+
+    function hideBanner() {
+      if (!banner) return;
+      banner.classList.add('translate-y-full');
+    }
+
+    function accept() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ consented: true, date: new Date().toISOString() }));
+      } catch (e) {}
+      loadMetrika();
+      hideBanner();
+    }
+
+    function decline() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ consented: false, date: new Date().toISOString() }));
+      } catch (e) {}
+      hideBanner();
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', accept);
+    if (declineBtn) declineBtn.addEventListener('click', decline);
+
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        var parsed = JSON.parse(stored);
+        if (parsed && parsed.consented === true) {
+          loadMetrika();
+          return;
+        }
+      }
+    } catch (e) {}
+
+    showBanner();
+  })();
+</script>

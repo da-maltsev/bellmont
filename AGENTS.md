@@ -99,3 +99,12 @@ Current canonical values (copy from here, do not invent):
 - Booking: https://b.tlintegration.com/?hotel=13392
 - Coordinates: 55.155248, 59.672412
 - Restaurant rating: https://mediarazvedka.tutu.ru/rating-restaurants-2024
+
+### 8. Cookie consent and analytics
+
+- The site uses a client-side cookie consent banner (`CookieConsent.astro`).
+- **Yandex.Metrika must NOT be loaded until the user clicks "Принять" (Accept).**
+- If the user previously accepted and `localStorage` contains `bellmont_cookie_consent.consented === true`, Metrika may be loaded immediately on subsequent visits.
+- If the user declined, Metrika is never loaded and the banner is hidden.
+- TravelLine booking widget is considered essential functionality and loads regardless of analytics consent.
+- The privacy policy page lives at `/privacy/` and must be linked from the footer.

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -51,11 +52,13 @@ const pageURL = new URL(Astro.url.pathname, siteUrl);
     <link rel="dns-prefetch" href="https://ru-ibe.tlintegration.ru" />
     <link rel="dns-prefetch" href="https://ibe.tlintegration.ru" />
     <link rel="dns-prefetch" href="https://ibe.tlintegration.com" />
+    <link rel="dns-prefetch" href="https://mc.yandex.ru" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://ru-ibe.tlintegration.ru" />
     <link rel="preconnect" href="https://ibe.tlintegration.ru" />
     <link rel="preconnect" href="https://ibe.tlintegration.com" />
+    <link rel="preconnect" href="https://mc.yandex.ru" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <script is:inline>
@@ -96,5 +99,6 @@ const pageURL = new URL(Astro.url.pathname, siteUrl);
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />
+    <CookieConsent />
   </body>
 </html>
