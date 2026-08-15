@@ -2,22 +2,29 @@
 interface Props {
   title?: string;
   subtitle?: string;
+  eyebrow?: string;
   id?: string;
   class?: string;
 }
 
-const { title, subtitle, id, class: className = '' } = Astro.props;
+const { title, subtitle, eyebrow, id, class: className = '' } = Astro.props;
 ---
 
-<section id={id} class={`py-12 md:py-16 ${className}`}>
+<section id={id} class={`py-16 md:py-20 ${className}`}>
   <div class="max-w-7xl mx-auto px-4">
     {title && (
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 md:mb-16">
+        {eyebrow && (
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-secondary">
+            {eyebrow}
+          </p>
+        )}
         <h2 class="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">
           {title}
         </h2>
+        <div class="mx-auto h-px w-16 bg-secondary"></div>
         {subtitle && (
-          <p class="text-gray-600 max-w-2xl mx-auto">
+          <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
             {subtitle}
           </p>
         )}

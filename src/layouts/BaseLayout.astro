@@ -20,6 +20,10 @@ const siteUrl = Astro.site || new URL('https://hotel-bellmont.ru');
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const ogImageURL = new URL(image, siteUrl);
 const pageURL = new URL(Astro.url.pathname, siteUrl);
+
+const basePath = import.meta.env.BASE_PATH || '/';
+const base = basePath === '/' ? '' : basePath;
+const bgImage = `${base}/images/background.webp`;
 ---
 
 <!doctype html>
@@ -97,7 +101,7 @@ const pageURL = new URL(Astro.url.pathname, siteUrl);
       })(window);
     </script>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col" style={`--bg-image: url('${bgImage}');`}>
     <slot />
     <CookieConsent />
   </body>

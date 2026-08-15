@@ -70,6 +70,7 @@ const amenities = [
     <Hero
       title="Услуги комплекса"
       subtitle="Ресторанно-гостиничный комплекс «Бельмонт» предлагает широкий спектр услуг для комфортного отдыха"
+      eyebrow="Услуги"
     >
       <TwoGisBadge slot="badge" />
     </Hero>
@@ -77,7 +78,7 @@ const amenities = [
     <Section>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {amenities.map((amenity) => (
-          <div id={amenity.id} class="bg-white rounded-xl overflow-hidden shadow-md scroll-mt-24">
+          <div id={amenity.id} class="bg-white rounded-2xl overflow-hidden border border-gray-100 scroll-mt-24">
             {amenity.image && (
               <img
                 src={amenity.image}

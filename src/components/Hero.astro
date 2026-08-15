@@ -2,35 +2,30 @@
 interface Props {
   title: string;
   subtitle?: string;
-  backgroundImage?: string;
+  eyebrow?: string;
 }
 
-const { title, subtitle, backgroundImage } = Astro.props;
+const { title, subtitle, eyebrow } = Astro.props;
 ---
 
-<section class="relative bg-primary text-white overflow-hidden">
-  {backgroundImage && (
-    <div class="absolute inset-0">
-      <img 
-        src={backgroundImage} 
-        alt="" 
-        class="w-full h-full object-cover opacity-30"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary/80"></div>
-    </div>
-  )}
-  {!backgroundImage && (
-    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-dark"></div>
-  )}
-  
-  <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+<section class="relative overflow-hidden text-white">
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/30 to-primary/70"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/35 to-transparent"></div>
+
+  <div class="relative mx-auto flex min-h-[58vh] max-w-7xl flex-col justify-center px-4 py-16 md:min-h-[68vh] md:py-24">
+    <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
-        <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white">
+        {eyebrow && (
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-secondary [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
+            {eyebrow}
+          </p>
+        )}
+        <h1 class="font-playfair text-4xl font-bold leading-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.45)] md:text-5xl lg:text-6xl">
           {title}
         </h1>
+        <div class="mt-6 h-px w-16 bg-secondary"></div>
         {subtitle && (
-          <p class="text-lg md:text-xl text-cream/90">
+          <p class="mt-6 text-lg leading-relaxed text-cream/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.4)] md:text-xl">
             {subtitle}
           </p>
         )}
@@ -38,7 +33,7 @@ const { title, subtitle, backgroundImage } = Astro.props;
           <slot />
         </div>
       </div>
-      <div class="flex-shrink-0 self-start md:self-center">
+      <div class="flex-shrink-0 self-start md:self-end">
         <slot name="badge" />
       </div>
     </div>

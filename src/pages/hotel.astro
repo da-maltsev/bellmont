@@ -99,6 +99,7 @@ const rooms = [
     <Hero
       title="Гостиница Бельмонт"
       subtitle="12 комфортабельных номеров и 8 апартаментов в центре Златоуста"
+      eyebrow="Гостиница"
     >
       <TwoGisBadge slot="badge" />
     </Hero>
@@ -153,7 +154,7 @@ const rooms = [
       </div>
     </Section>
     
-    <Section title="Номера" subtitle="Выберите категорию номера, подходящую именно вам" class="bg-white">
+    <Section title="Номера" subtitle="Выберите категорию номера, подходящую именно вам" eyebrow="Категории номеров" class="bg-white">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {rooms.map((room) => (
           <RoomCard {...room} />
