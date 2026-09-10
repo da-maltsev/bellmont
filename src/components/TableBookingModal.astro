@@ -1,0 +1,167 @@
+---
+/**
+ * TableBookingModal — попап бронирования столика через GuestMe.
+ *
+ * Использование:
+ *   1. Подключите компонент один раз внизу <main>:
+ *        <TableBookingModal />
+ *   2. Любая кнопка с атрибутом data-guestme-open откроет модалку:
+ *        <button type="button" data-guestme-open>Забронировать столик</button>
+ *
+ * Iframe с формой грузится ЛЕНИВО — только по первому клику,
+ * поэтому на скорость загрузки страницы и приватность не влияет.
+ */
+
+// !!! Если ссылка на виджет изменится — править только здесь.
+const GUESTME_URL = 'https://book.guestme.ru/71578003';
+---
+
+<div
+  id="guestme-modal"
+  class="hidden fixed inset-0 z-[60] overflow-y-auto"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="guestme-modal-title"
+>
+  <div
+    class="fixed inset-0 bg-black/60 backdrop-blur-[2px]"
+    data-guestme-backdrop
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative flex min-h-full items-center justify-center p-4">
+    <div class="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+      <div class="flex items-center justify-between gap-4 border-b border-gray-100 px-5 py-4">
+        <div>
+          <h2 id="guestme-modal-title" class="font-playfair text-xl font-bold text-primary">
+            Бронирование столика
+          </h2>
+          <p class="mt-0.5 text-sm text-gray-500">
+            Ресторан «Счастливый кузюк» — онлайн-форма GuestMe
+          </p>
+        </div>
+        <button
+          type="button"
+          data-guestme-close
+          aria-label="Закрыть окно бронирования"
+          class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-charcoal focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="relative bg-cream">
+        <div id="guestme-loader" class="flex items-center justify-center gap-3 px-5 py-16 text-gray-500">
+          <svg class="h-6 w-6 animate-spin text-primary" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+          <span class="text-sm">Загружаем форму бронирования…</span>
+        </div>
+        <iframe
+          id="guestme-iframe"
+          data-src={GUESTME_URL}
+          title="Онлайн-бронирование столика в ресторане «Счастливый кузюк»"
+          width="100%"
+          height="640"
+          class="hidden w-full border-0"
+          style="min-height: 480px; height: 70vh; max-height: 720px;"
+          allow="payment"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <noscript>
+          <p class="px-5 py-8 text-center text-sm text-gray-600">
+            Для онлайн-бронирования нужен включённый JavaScript.
+            Позвоните нам:
+            <a class="font-medium text-primary underline" href="tel:+79068628866">+7 (906) 862-88-66</a>
+          </p>
+        </noscript>
+      </div>
+
+      <div class="flex flex-col items-center justify-between gap-2 border-t border-gray-100 px-5 py-3 text-sm sm:flex-row">
+        <p class="text-gray-500">
+          Не получилось? Позвоните:
+          <a href="tel:+79068628866" class="font-medium text-primary hover:text-primary-dark">
+            +7 (906) 862-88-66
+          </a>
+        </p>
+        <a
+          href={GUESTME_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 font-medium text-primary hover:text-primary-dark"
+        >
+          Открыть форму в новой вкладке
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var modal = document.getElementById('guestme-modal');
+    if (!modal) return;
+
+    var iframe = document.getElementById('guestme-iframe');
+    var loader = document.getElementById('guestme-loader');
+    var closeBtn = modal.querySelector('[data-guestme-close]');
+    var backdrop = modal.querySelector('[data-guestme-backdrop]');
+    var lastFocused = null;
+    var iframeLoaded = false;
+
+    function showIframe() {
+      if (!iframe || !loader) return;
+      loader.classList.add('hidden');
+      iframe.classList.remove('hidden');
+    }
+
+    if (iframe) {
+      iframe.addEventListener('load', function () {
+        iframeLoaded = true;
+        showIframe();
+      });
+      // Страховка: если событие load не пришло (блокировщик, обрыв сети),
+      // через 12 c показываем iframe как есть — снизу всё равно есть
+      // fallback-ссылка и телефон.
+      setTimeout(function () {
+        if (!iframeLoaded && !modal.classList.contains('hidden') && iframe.getAttribute('src')) {
+          showIframe();
+        }
+      }, 12000);
+    }
+
+    function openModal() {
+      lastFocused = document.activeElement;
+      if (iframe && !iframe.getAttribute('src')) {
+        var src = iframe.getAttribute('data-src');
+        if (src) iframe.setAttribute('src', src);
+      }
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    document.querySelectorAll('[data-guestme-open]').forEach(function (btn) {
+      btn.addEventListener('click', openModal);
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+  })();
+</script>
