@@ -1,9 +1,10 @@
 ---
 interface Props {
   class?: string;
+  hideCaption?: boolean;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', hideCaption = false } = Astro.props;
 ---
 
 <div class={`booking-widget ${className}`}>
@@ -17,5 +18,7 @@ const { class: className = '' } = Astro.props;
     </svg>
     Забронировать номер
   </button>
-  <p class="text-xs text-gray-500 mt-2">Лучшие тарифы на официальном сайте</p>
+  {!hideCaption && (
+    <p class="text-xs text-gray-500 mt-2">Лучшие тарифы на официальном сайте</p>
+  )}
 </div>
