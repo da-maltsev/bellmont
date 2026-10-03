@@ -39,12 +39,13 @@ import TwoGisBadge from '../components/TwoGisBadge.astro';
         </svg>
         Забронировать столик
       </button>
-      <a
-        href="#booking"
-        class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+      <button
+        type="button"
+        data-tl-booking-open="true"
+        class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg transition-colors cursor-pointer"
       >
         Забронировать номер
-      </a>
+      </button>
       <TwoGisBadge slot="badge" />
     </Hero>
     
